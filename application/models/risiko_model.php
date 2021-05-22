@@ -82,11 +82,6 @@ class Risiko_model extends CI_Model{
             'rules' => 'numeric'
             ],
             
-            ['field' => 'bawaan_jenis_risiko',
-            'label' => 'Jenis Risiko Bawaan',
-            'rules' => 'required'
-            ],
-            
             ['field' => 'kontrol_keterangan',
             'label' => 'Keterangan Kontrol',
             'rules' => 'required'
@@ -110,11 +105,6 @@ class Risiko_model extends CI_Model{
             ['field' => 'sisa_paparan_nilai',
             'label' => 'Nilai Paparan Risiko Sisa',
             'rules' => 'numeric'
-            ],
-            
-            ['field' => 'sisa_jenis_risiko',
-            'label' => 'Jenis Risiko Sisa',
-            'rules' => 'required'
             ],
             
             ['field' => 'mitigasi_kontrol',
@@ -147,7 +137,7 @@ class Risiko_model extends CI_Model{
         $this->id = uniqid();
         $this->klasifikasi_id = $post["klasifikasi_id"];
         $this->subklasifikasi = $post["subklasifikasi"];
-        $this->tanggal = $post["tanggal"];
+        // $this->tanggal = $post["tanggal"];
         $this->dampak_keterangan = $post["dampak_keterangan"];
         $this->dampak_nilai = $post["dampak_nilai"];
         $this->pengancam_keterangan = $post["pengancam_keterangan"];
@@ -156,15 +146,15 @@ class Risiko_model extends CI_Model{
         $this->bawaan_kerentanan_nilai = $post["bawaan_kerentanan_nilai"];
         $this->bawaan_paparan_keterangan = $post["bawaan_paparan_keterangan"];
         $this->bawaan_paparan_nilai = $post["bawaan_paparan_nilai"];
-        $this->bawaan_jenis_risiko = $post["bawaan_jenis_risiko"];
-        $this->bawaan_nilai_risiko = $post["bawaan_nilai_risiko"];
+        // $this->bawaan_jenis_risiko = $post["bawaan_jenis_risiko"];
+        // $this->bawaan_nilai_risiko = $post["bawaan_nilai_risiko"];
         $this->kontrol_keterangan = $post["kontrol_keterangan"];
         $this->sisa_paparan_keterangan = $post["sisa_paparan_keterangan"];
         $this->sisa_paparan_nilai = $post["sisa_paparan_nilai"];
         $this->sisa_kerentanan_keterangan = $post["sisa_kerentanan_keterangan"];
         $this->sisa_kerentanan_nilai = $post["sisa_kerentanan_nilai"];
-        $this->sisa_jenis_risiko = $post["sisa_jenis_risiko"];
-        $this->sisa_nilai_risiko = $post["sisa_nilai_risiko"];
+        // $this->sisa_jenis_risiko = $post["sisa_jenis_risiko"];
+        // $this->sisa_nilai_risiko = $post["sisa_nilai_risiko"];
         $this->mitigasi_kontrol = $post["mitigasi_kontrol"];
         $this->mitigasi_pic = $post["mitigasi_pic"];
         $this->mitigasi_target = $post["mitigasi_target"];
@@ -176,7 +166,7 @@ class Risiko_model extends CI_Model{
         $this->id = $post["id"];
         $this->klasifikasi_id = $post["klasifikasi_id"];
         $this->subklasifikasi = $post["subklasifikasi"];
-        $this->tanggal = $post["tanggal"];
+        // $this->tanggal = $post["tanggal"];
         $this->dampak_keterangan = $post["dampak_keterangan"];
         $this->dampak_nilai = $post["dampak_nilai"];
         $this->pengancam_keterangan = $post["pengancam_keterangan"];
@@ -185,15 +175,15 @@ class Risiko_model extends CI_Model{
         $this->bawaan_kerentanan_nilai = $post["bawaan_kerentanan_nilai"];
         $this->bawaan_paparan_keterangan = $post["bawaan_paparan_keterangan"];
         $this->bawaan_paparan_nilai = $post["bawaan_paparan_nilai"];
-        $this->bawaan_jenis_risiko = $post["bawaan_jenis_risiko"];
-        $this->bawaan_nilai_risiko = $post["bawaan_nilai_risiko"];
+        // $this->bawaan_jenis_risiko = $post["bawaan_jenis_risiko"];
+        // $this->bawaan_nilai_risiko = $post["bawaan_nilai_risiko"];
         $this->kontrol_keterangan = $post["kontrol_keterangan"];
         $this->sisa_kerentanan_keterangan = $post["sisa_kerentanan_keterangan"];
         $this->sisa_kerentanan_nilai = $post["sisa_kerentanan_nilai"];
         $this->sisa_paparan_keterangan = $post["sisa_paparan_keterangan"];
         $this->sisa_paparan_nilai = $post["sisa_paparan_nilai"];
-        $this->sisa_jenis_risiko = $post["sisa_jenis_risiko"];
-        $this->sisa_nilai_risiko = $post["sisa_nilai_risiko"];
+        // $this->sisa_jenis_risiko = $post["sisa_jenis_risiko"];
+        // $this->sisa_nilai_risiko = $post["sisa_nilai_risiko"];
         $this->mitigasi_kontrol = $post["mitigasi_kontrol"];
         $this->mitigasi_pic = $post["mitigasi_pic"];
         $this->mitigasi_target = $post["mitigasi_target"];

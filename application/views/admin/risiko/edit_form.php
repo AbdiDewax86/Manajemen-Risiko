@@ -40,13 +40,22 @@
                         </div>
                         <!-- Card Body -->
                         <div class="card-body">
+
                             <?php if ($this->session->flashdata('success')): ?>
 				                <div class="alert alert-success" role="alert">
 				                	<?php echo $this->session->flashdata('success'); ?>
 				                </div>
 				            <?php endif; ?>
 
-                            <form class="user" action="<?php echo site_url('risiko/add') ?>" method="post" enctype="multipart/form-data">
+                            <form class="user" action="" method="post" enctype="multipart/form-data">
+                                <div class="form-group row">
+                                    <div class="col-lg-4 col-12">
+                                        <p class="text-right align-middle">Nomor ID</p>
+                                    </div>
+                                    <div class="col-lg-6 col-12">
+                                        <input class="form-control" name="id" value="<?php echo $risiko->id ?>" readonly> 
+                                    </div>
+                                </div>
                                 <h4>Klasifikasi</h4>
                                 <div class="form-group row">
                                     <div class="col-lg-4 col-12">
@@ -54,7 +63,7 @@
                                     </div>
                                     <div class="col-lg-6 col-12">
                                         <input class="form-control <?php echo form_error('klasifikasi_id') ? 'is-invalid':'' ?>" 
-                                        type="number" name="klasifikasi_id" placeholder="1-6..."> 
+                                        type="number" name="klasifikasi_id" placeholder="1-6..." value="<?php echo $risiko->klasifikasi_id ?>"> 
                                     </div>
                                 </div>
                                 <div class="form-group row">
@@ -63,7 +72,7 @@
                                     </div>
                                     <div class="col-lg-6 col-12">
                                         <input class="form-control <?php echo form_error('subklasifikasi') ? 'is-invalid':'' ?>" 
-                                        type="text" name="subklasifikasi" placeholder="Subklasifikasi..."> 
+                                        type="text" name="subklasifikasi" placeholder="Subklasifikasi..." value="<?php echo $risiko->subklasifikasi ?>"> 
                                     </div>
                                 </div>
                                 <h4>Dampak</h4>
@@ -73,7 +82,7 @@
                                     </div>
                                     <div class="col-lg-6 col-12">
                                         <textarea class="form-control <?php echo form_error('dampak_keterangan') ? 'is-invalid':'' ?>"
-                                        name="dampak_keterangan" rows="4"></textarea>
+                                        name="dampak_keterangan" rows="4"><?php echo $risiko->dampak_keterangan ?></textarea>
                                     </div>
                                 </div>
                                 <div class="form-group row">
@@ -82,7 +91,7 @@
                                     </div>
                                     <div class="col-lg-6 col-12">
                                         <input class="form-control <?php echo form_error('dampak_nilai') ? 'is-invalid':'' ?>" 
-                                        type="number" name="dampak_nilai" placeholder="1-5..."> 
+                                        type="number" name="dampak_nilai" placeholder="1-5..." value="<?php echo $risiko->dampak_nilai ?>"> 
                                     </div>
                                 </div>
                                 <h4>Pengancam</h4>
@@ -92,7 +101,7 @@
                                     </div>
                                     <div class="col-lg-6 col-12">
                                         <textarea class="form-control <?php echo form_error('pengancam_keterangan') ? 'is-invalid':'' ?>"
-                                        name="pengancam_keterangan" rows="4"></textarea>
+                                        name="pengancam_keterangan" rows="4"><?php echo $risiko->pengancam_keterangan ?></textarea>
                                     </div>
                                 </div>
                                 <div class="form-group row">
@@ -101,7 +110,7 @@
                                     </div>
                                     <div class="col-lg-6 col-12">
                                         <input class="form-control <?php echo form_error('pengancam_nilai') ? 'is-invalid':'' ?>" 
-                                        type="number" name="pengancam_nilai" placeholder="1-5..."> 
+                                        type="number" name="pengancam_nilai" placeholder="1-5..." value="<?php echo $risiko->pengancam_nilai ?>"> 
                                     </div>
                                 </div>
                                 <h4>Risiko Bawaan</h4>
@@ -112,7 +121,7 @@
                                     </div>
                                     <div class="col-lg-6 col-12">
                                         <textarea class="form-control <?php echo form_error('bawaan_kerentanan_keterangan') ? 'is-invalid':'' ?>"
-                                        name="bawaan_kerentanan_keterangan" rows="4"></textarea>
+                                        name="bawaan_kerentanan_keterangan" rows="4"><?php echo $risiko->bawaan_kerentanan_keterangan ?></textarea>
                                     </div>
                                 </div>
                                 <div class="form-group row">
@@ -121,7 +130,7 @@
                                     </div>
                                     <div class="col-lg-6 col-12">
                                         <input class="form-control <?php echo form_error('bawaan_kerentanan_nilai') ? 'is-invalid':'' ?>" 
-                                        type="number" name="bawaan_kerentanan_nilai" placeholder="1-5..."> 
+                                        type="number" name="bawaan_kerentanan_nilai" placeholder="1-5..." value="<?php echo $risiko->bawaan_kerentanan_nilai ?>"> 
                                     </div>
                                 </div>
                                 <h5>Paparan</h5>
@@ -131,7 +140,7 @@
                                     </div>
                                     <div class="col-lg-6 col-12">
                                         <textarea class="form-control <?php echo form_error('bawaan_paparan_keterangan') ? 'is-invalid':'' ?>"
-                                        name="bawaan_paparan_keterangan" rows="4"></textarea>
+                                        name="bawaan_paparan_keterangan" rows="4"><?php echo $risiko->bawaan_paparan_keterangan ?></textarea>
                                     </div>
                                 </div>
                                 <div class="form-group row">
@@ -140,7 +149,7 @@
                                     </div>
                                     <div class="col-lg-6 col-12">
                                         <input class="form-control <?php echo form_error('bawaan_paparan_nilai') ? 'is-invalid':'' ?>" 
-                                        type="number" name="bawaan_paparan_nilai" placeholder="1-5..."> 
+                                        type="number" name="bawaan_paparan_nilai" placeholder="1-5..." value="<?php echo $risiko->bawaan_paparan_nilai ?>"> 
                                     </div>
                                 </div>
                                 <h4>Kontrol</h4>
@@ -150,7 +159,7 @@
                                     </div>
                                     <div class="col-lg-6 col-12">
                                         <textarea class="form-control <?php echo form_error('kontrol_keterangan') ? 'is-invalid':'' ?>"
-                                        name="kontrol_keterangan" rows="4"></textarea>
+                                        name="kontrol_keterangan" rows="4"><?php echo $risiko->kontrol_keterangan ?></textarea>
                                     </div>
                                 </div>
                                 <h4>Risiko Sisa</h4>
@@ -161,7 +170,7 @@
                                     </div>
                                     <div class="col-lg-6 col-12">
                                         <textarea class="form-control <?php echo form_error('sisa_kerentanan_keterangan') ? 'is-invalid':'' ?>"
-                                        name="sisa_kerentanan_keterangan" rows="4"></textarea>
+                                        name="sisa_kerentanan_keterangan" rows="4"><?php echo $risiko->sisa_kerentanan_keterangan ?></textarea>
                                     </div>
                                 </div>
                                 <div class="form-group row">
@@ -170,7 +179,7 @@
                                     </div>
                                     <div class="col-lg-6 col-12">
                                         <input class="form-control <?php echo form_error('sisa_kerentanan_nilai') ? 'is-invalid':'' ?>" 
-                                        type="number" name="sisa_kerentanan_nilai" placeholder="1-5..."> 
+                                        type="number" name="sisa_kerentanan_nilai" placeholder="1-5..." value="<?php echo $risiko->sisa_kerentanan_nilai ?>"> 
                                     </div>
                                 </div>
                                 <h5>Paparan</h5>
@@ -180,7 +189,7 @@
                                     </div>
                                     <div class="col-lg-6 col-12">
                                         <textarea class="form-control <?php echo form_error('sisa_paparan_keterangan') ? 'is-invalid':'' ?>"
-                                        name="sisa_paparan_keterangan" rows="4"></textarea>
+                                        name="sisa_paparan_keterangan" rows="4"><?php echo $risiko->sisa_paparan_keterangan ?></textarea>
                                     </div>
                                 </div>
                                 <div class="form-group row">
@@ -189,7 +198,7 @@
                                     </div>
                                     <div class="col-lg-6 col-12">
                                         <input class="form-control <?php echo form_error('sisa_paparan_nilai') ? 'is-invalid':'' ?>" 
-                                        type="number" name="sisa_paparan_nilai" placeholder="1-5..."> 
+                                        type="number" name="sisa_paparan_nilai" placeholder="1-5..." value="<?php echo $risiko->sisa_paparan_nilai ?>"> 
                                     </div>
                                 </div>
                                 <h4>Mitigasi</h4>
@@ -199,7 +208,7 @@
                                     </div>
                                     <div class="col-lg-6 col-12">
                                         <textarea class="form-control <?php echo form_error('mitigasi_kontrol') ? 'is-invalid':'' ?>"
-                                        name="mitigasi_kontrol" rows="4"></textarea>
+                                        name="mitigasi_kontrol" rows="4"><?php echo $risiko->mitigasi_kontrol ?></textarea>
                                     </div>
                                 </div>
                                 <div class="form-group row">
@@ -208,7 +217,7 @@
                                     </div>
                                     <div class="col-lg-6 col-12">
                                         <textarea class="form-control <?php echo form_error('mitigasi_pic') ? 'is-invalid':'' ?>"
-                                        name="mitigasi_pic" rows="4"></textarea>
+                                        name="mitigasi_pic" rows="4"><?php echo $risiko->mitigasi_pic ?></textarea>
                                     </div>
                                 </div>
                                 <div class="form-group row">
@@ -217,7 +226,7 @@
                                     </div>
                                     <div class="col-lg-6 col-12">
                                         <textarea class="form-control <?php echo form_error('mitigasi_target') ? 'is-invalid':'' ?>"
-                                        name="mitigasi_target" rows="4"></textarea>
+                                        name="mitigasi_target" rows="4"><?php echo $risiko->mitigasi_target ?></textarea>
                                     </div>
                                 </div>
 
