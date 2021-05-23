@@ -1,6 +1,6 @@
 <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
     <!-- Sidebar - Brand -->
-    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="overview">
+    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="<?php echo site_url('admin/overview') ?>">
         <div class="sidebar-brand-icon rotate-n-15">
             <i class="fas fa-laugh-wink"></i>
         </div>
@@ -10,7 +10,7 @@
     <hr class="sidebar-divider my-0">
     <!-- Nav Item - Dashboard -->
     <li class="nav-item active">
-        <a class="nav-link" href="overview">
+        <a class="nav-link" href="<?php echo site_url('admin/overview') ?>">
             <i class="fas fa-fw fa-tachometer-alt"></i>
             <span>Dashboard</span></a>
     </li>
@@ -30,27 +30,27 @@
     <hr class="sidebar-divider">
     <!-- Nav Item - Pages Collapse Menu -->
     <li class="nav-item">
-        <a class="nav-link" href="informasi">
+        <a class="nav-link" href="<?php echo site_url('admin/overview/informasi') ?>">
             <span>Informasi</span></a>
     </li>
     <li class="nav-item">
-        <a class="nav-link" href="orang">
+        <a class="nav-link" href="<?php echo site_url('admin/overview/orang') ?>">
             <span>Orang</span></a>
     </li>
     <li class="nav-item">
-        <a class="nav-link" href="fisik">
+        <a class="nav-link" href="<?php echo site_url('admin/overview/fisik') ?>">
             <span>Fisik</span></a>
     </li>
     <li class="nav-item">
-        <a class="nav-link" href="layanan">
+        <a class="nav-link" href="<?php echo site_url('admin/overview/layanan') ?>">
             <span>Layanan</span></a>
     </li>
     <li class="nav-item">
-        <a class="nav-link" href="intangible">
+        <a class="nav-link" href="<?php echo site_url('admin/overview/intangible') ?>">
             <span>Intangible</span></a>
     </li>
     <li class="nav-item">
-        <a class="nav-link" href="software">
+        <a class="nav-link" href="<?php echo site_url('admin/overview/software') ?>">
             <span>Software</span></a>
     </li>
     <!-- Divider -->

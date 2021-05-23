@@ -52,10 +52,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 $route['default_controller'] = 'overview';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
-$route['overview'] = 'overview';
-$route['informasi'] = 'overview/informasi';
-$route['orang'] = 'overview/orang';
-$route['fisik'] = 'overview/fisik';
-$route['layanan'] = 'overview/layanan';
-$route['intangible'] = 'overview/intangible';
-$route['software'] = 'overview/software';
+
+$route['admin'] = 'admin/overview';
+// $route['informasi'] = 'overview/informasi';
+// $route['orang'] = 'overview/orang';
+// $route['fisik'] = 'overview/fisik';
+// $route['layanan'] = 'overview/layanan';
+// $route['intangible'] = 'overview/intangible';
+// $route['software'] = 'overview/software';

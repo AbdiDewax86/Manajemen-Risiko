@@ -172,9 +172,9 @@
 									    	</td width="250">
 
                                             <td>
-									    		<a href="<?php echo site_url('risiko/edit/'.$risiko_s->id) ?>"
+									    		<a href="<?php echo site_url('admin/risiko/edit/'.$risiko_s->id) ?>"
 									    		 class="btn btn-small"><i class="fas fa-edit"></i> Edit</a>
-									    		<a onclick="deleteConfirm('<?php echo site_url('risiko/delete/'.$risiko_s->id) ?>')"
+									    		<a onclick="deleteConfirm('<?php echo site_url('admin/risiko/delete/'.$risiko_s->id) ?>')"
 									    		 href="#!" class="btn btn-small text-danger"><i class="fas fa-trash"></i> Hapus</a>
 									    	</td>
 									    </tr>

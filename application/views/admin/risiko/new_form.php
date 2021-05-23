@@ -46,7 +46,7 @@
 				                </div>
 				            <?php endif; ?>
 
-                            <form class="user" action="<?php echo site_url('risiko/add') ?>" method="post" enctype="multipart/form-data">
+                            <form class="user" action="<?php echo site_url('admin/risiko/add') ?>" method="post" enctype="multipart/form-data">
                                 <h4>Klasifikasi</h4>
                                 <div class="form-group row">
                                     <div class="col-lg-4 col-12">
