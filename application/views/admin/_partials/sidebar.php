@@ -18,12 +18,12 @@
     <hr class="sidebar-divider">
     <!-- Nav Item - Pages Collapse Menu -->
     <li class="nav-item">
-        <a class="nav-link" href="admin_user">
+        <a class="nav-link" href="<?php echo site_url('admin/usermanagement') ?>">
             <span>Manajemen User</span></a>
     </li>
     <!-- Nav Item - Utilities Collapse Menu -->
     <li class="nav-item">
-        <a class="nav-link" href="admin_subklasifikasi">
+        <a class="nav-link" href="<?php echo site_url('admin/risiko') ?>">
             <span>Manajemen Subklasifikasi</span></a>
     </li>
     <!-- Divider -->

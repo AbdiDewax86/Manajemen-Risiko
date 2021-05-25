@@ -8,9 +8,16 @@ class Risiko extends CI_Controller{
         parent::__construct();
         $this->load->model("risiko_model");
         $this->load->library('form_validation');
+        
+        $this->load->model("user_model");
+        if($this->user_model->isNotLogin()) redirect(site_url('admin/login'));
     }
 
     public function index(){
+        $this->load->view("admin/risiko/risiko");
+    }
+
+    public function list(){
         $data["risiko"] = $this->risiko_model->getAll();
         $this->load->view("admin/risiko/list", $data);
     }

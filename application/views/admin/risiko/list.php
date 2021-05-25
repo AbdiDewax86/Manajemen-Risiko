@@ -44,6 +44,7 @@
                                         <tr>
                                             <th rowspan="3">ID Klasifikasi</th>
                                             <th rowspan="3">Subklasifikasi</th>
+                                            <th rowspan="3">Tanggal</th>
                                             <th rowspan="2" colspan="2">Dampak</th>
                                             <th rowspan="2" colspan="2">Pengancam</th>
                                             <th colspan="6">Identifikasi Risiko Bawaan</th>
@@ -90,6 +91,10 @@
 									    	<td>
 									    		<?php echo $risiko_s->subklasifikasi ?>
 									    	</td>
+
+                                            <td>
+                                                <?php echo $risiko_s->tanggal ?>
+                                            </td>
 
 									    	<td class="small">
 									    		<?php echo $risiko_s->dampak_keterangan ?>
@@ -208,6 +213,12 @@
 
     <!-- JS Scripts -->
     <?php $this->load->view("admin/_partials/js.php") ?>
+    <script>
+    function deleteConfirm(url){
+        $('#btn-delete').attr('href', url);
+        $('#deleteModal').modal();
+    }
+    </script>
 
 </body>
 
