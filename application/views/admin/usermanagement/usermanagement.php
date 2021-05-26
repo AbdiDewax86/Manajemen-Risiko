@@ -43,7 +43,7 @@
                                     <img>
                                         
                                     </img>
-                                    <a href="<?php echo site_url("admin/usermanagement/new_user")?>" class="d-sm-inline-block btn btn-sm btn-primary shadow-sm btn-block py-3">
+                                    <a href="<?php echo site_url("admin/usermanagement/add")?>" class="d-sm-inline-block btn btn-sm btn-primary shadow-sm btn-block py-3">
                                         Tambah User Baru
                                     </a>
                                 </div>
