@@ -8,6 +8,7 @@ class UserManagement_model extends CI_Model{
     public $user_id;
     public $username;
     public $email;
+    public $password;
     public $fullname;
     public $phone;
     public $lastlogin;
@@ -19,6 +20,35 @@ class UserManagement_model extends CI_Model{
     public $akses_layanan;
     public $akses_intangible;
     public $akses_software;
+
+    public function rules(){
+        return [
+            ['field' => 'username',
+            'label' => 'Username',
+            'rules' => 'required'
+            ],
+            ['field' => 'email',
+            'label' => 'E-mail',
+            'rules' => 'required'
+            ],
+            ['field' => 'password',
+            'label' => 'Password',
+            'rules' => 'required'
+            ],
+            ['field' => 'fullname',
+            'label' => 'Full Name',
+            'rules' => 'required'
+            ],
+            ['field' => 'phone',
+            'label' => 'Phone',
+            'rules' => 'required'
+            ],
+            ['field' => 'role',
+            'label' => 'Role',
+            'rules' => 'required'
+            ],
+        ];
+    }
 
     public function getAll(){
         return $this->db->get($this->_table)->result();
@@ -32,6 +62,7 @@ class UserManagement_model extends CI_Model{
         $post = $this->input->post();
         $this->username = $post["username"];
         $this->email = $post["email"];
+        $this->password = $post["password"];
         $this->fullname = $post["fullname"];
         $this->phone = $post["phone"];
         $this->role = $post["role"];
@@ -49,6 +80,7 @@ class UserManagement_model extends CI_Model{
         $this->user_id = $post["user_id"];
         $this->username = $post["username"];
         $this->email = $post["email"];
+        $this->password = $post["password"];
         $this->fullname = $post["fullname"];
         $this->phone = $post["phone"];
         $this->role = $post["role"];

@@ -41,14 +41,21 @@
                         </div>
                         <!-- Card Body -->
                         <div class="card-body">
-                            <form class="user">
+                            <?php if ($this->session->flashdata('success')): ?>
+				                <div class="alert alert-success" role="alert">
+				                	<?php echo $this->session->flashdata('success'); ?>
+				                </div>
+				            <?php endif; ?>
+
+                            <form class="user" action="<?php echo site_url('admin/usermanagement/add') ?>" method="post" enctype="multipart/form-data">
                                 <h4>Data User</h4>
                                 <div class="form-group row">
                                     <div class="col-lg-4 col-12">
                                         <p class="text-right align-middle">Username</p>
                                     </div>
                                     <div class="col-lg-6 col-12">
-                                        <input type="text" class="form-control" placeholder="Username..."> 
+                                        <input class="form-control <?php echo form_error('username') ? 'is-invalid':'' ?>" 
+                                        type="text" name="username" placeholder="Username..."> 
                                     </div>
                                 </div>
                                 <div class="form-group row">
@@ -56,7 +63,8 @@
                                         <p class="text-right align-middle">E-mail</p>
                                     </div>
                                     <div class="col-lg-6 col-12">
-                                        <input type="email" class="form-control" placeholder="E-mail..."> 
+                                        <input class="form-control <?php echo form_error('email') ? 'is-invalid':'' ?>" 
+                                        type="email" name="email" placeholder="E-mail..."> 
                                     </div>
                                 </div>
                                 <div class="form-group row">
@@ -64,7 +72,8 @@
                                         <p class="text-right align-middle">Password</p>
                                     </div>
                                     <div class="col-lg-6 col-12">
-                                        <input type="password" class="form-control" placeholder="Password..."> 
+                                        <input class="form-control <?php echo form_error('password') ? 'is-invalid':'' ?>" 
+                                        type="password" name="password" placeholder="Password..."> 
                                     </div>
                                 </div>
                                 <div class="form-group row">
@@ -77,10 +86,11 @@
                                 </div>
                                 <div class="form-group row">
                                     <div class="col-lg-4 col-12">
-                                        <p class="text-right align-middle">Jenis User</p>
+                                        <p class="text-right align-middle">Peran User</p>
                                     </div>
                                     <div class="col-lg-6 col-12">
-                                        <select class="form-control">
+                                        <select class="form-control <?php echo form_error('role') ? 'is-invalid':'' ?>" 
+                                        name="role">
                                             <option>Biasa</option>
                                             <option>Operator</option>
                                         </select>
@@ -92,7 +102,8 @@
                                         <p class="text-right align-middle">Nama Lengkap</p>
                                     </div>
                                     <div class="col-lg-6 col-12">
-                                        <input type="text" class="form-control" placeholder="Nama Lengkap"> 
+                                        <input class="form-control <?php echo form_error('fullname') ? 'is-invalid':'' ?>" 
+                                        type="text" name="fullname" placeholder="Nama Lengkap..."> 
                                     </div>
                                 </div>
                                 <div class="form-group row">
@@ -100,7 +111,8 @@
                                         <p class="text-right align-middle">Nomor Telepon</p>
                                     </div>
                                     <div class="col-lg-6 col-12">
-                                        <input type="email" class="form-control" placeholder="Nomor Telepon"> 
+                                        <input class="form-control <?php echo form_error('phone') ? 'is-invalid':'' ?>" 
+                                        type="text" name="phone" placeholder="Username...">  
                                     </div>
                                 </div>
                                 <h4>Akses Klasifikasi</h4>
@@ -109,7 +121,10 @@
                                         <p class="text-right align-middle">Informasi</p>
                                     </div>
                                     <div class="col-lg-6 col-12 pl-4">
-                                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                                        <input class="form-check-input <?php echo form_error('akses_informasi') ? 'is-invalid':'' ?>" 
+                                        type="hidden" name="akses_informasi" value="0" id="flexCheckDefault">
+                                        <input class="form-check-input <?php echo form_error('akses_informasi') ? 'is-invalid':'' ?>" 
+                                        type="checkbox" name="akses_informasi" value="1" id="flexCheckDefault">
                                     </div>
                                 </div>
                                 <div class="form-group row">
@@ -117,7 +132,10 @@
                                         <p class="text-right align-middle">Orang</p>
                                     </div>
                                     <div class="col-lg-6 col-12 pl-4">
-                                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                                        <input class="form-check-input <?php echo form_error('akses_orang') ? 'is-invalid':'' ?>" 
+                                        type="hidden" name="akses_orang" value="0" id="flexCheckDefault">
+                                        <input class="form-check-input <?php echo form_error('akses_orang') ? 'is-invalid':'' ?>" 
+                                        type="checkbox" name="akses_orang" value="1" id="flexCheckDefault">
                                     </div>
                                 </div>
                                 <div class="form-group row">
@@ -125,7 +143,10 @@
                                         <p class="text-right align-middle">Fisik</p>
                                     </div>
                                     <div class="col-lg-6 col-12 pl-4">
-                                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                                        <input class="form-check-input <?php echo form_error('akses_fisik') ? 'is-invalid':'' ?>" 
+                                        type="hidden" name="akses_fisik" value="0" id="flexCheckDefault">
+                                        <input class="form-check-input <?php echo form_error('akses_fisik') ? 'is-invalid':'' ?>" 
+                                        type="checkbox" name="akses_fisik" value="1" id="flexCheckDefault">
                                     </div>
                                 </div>
                                 <div class="form-group row">
@@ -133,7 +154,10 @@
                                         <p class="text-right align-middle">Layanan</p>
                                     </div>
                                     <div class="col-lg-6 col-12 pl-4">
-                                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                                        <input class="form-check-input <?php echo form_error('akses_layanan') ? 'is-invalid':'' ?>" 
+                                        type="hidden" name="akses_layanan" value="0" id="flexCheckDefault">
+                                        <input class="form-check-input <?php echo form_error('akses_layanan') ? 'is-invalid':'' ?>" 
+                                        type="checkbox" name="akses_layanan" value="1" id="flexCheckDefault">
                                     </div>
                                 </div>
                                 <div class="form-group row">
@@ -141,7 +165,10 @@
                                         <p class="text-right align-middle">Intangible</p>
                                     </div>
                                     <div class="col-lg-6 col-12 pl-4">
-                                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                                        <input class="form-check-input <?php echo form_error('akses_intangible') ? 'is-invalid':'' ?>" 
+                                        type="hidden" name="akses_intangible" value="0" id="flexCheckDefault">
+                                        <input class="form-check-input <?php echo form_error('akses_intangible') ? 'is-invalid':'' ?>" 
+                                        type="checkbox" name="akses_intangible" value="1" id="flexCheckDefault">
                                     </div>
                                 </div>
                                 <div class="form-group row">
@@ -149,12 +176,13 @@
                                         <p class="text-right align-middle">Software</p>
                                     </div>
                                     <div class="col-lg-6 col-12 pl-4">
-                                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                                        <input class="form-check-input <?php echo form_error('akses_software') ? 'is-invalid':'' ?>" 
+                                        type="hidden" name="akses_software" value="0" id="flexCheckDefault">
+                                        <input class="form-check-input <?php echo form_error('akses_software') ? 'is-invalid':'' ?>" 
+                                        type="checkbox" name="akses_software" value="1" id="flexCheckDefault">
                                     </div>
                                 </div>
-                                <a href="MR_admin_index.html" class="btn btn-primary btn-user btn-block">
-                                    Buat User
-                                </a>
+                                <input class="btn btn-primary btn-user btn-block" type="submit" value="Save"/>
                             </form>
                         </div>
                     </div>
