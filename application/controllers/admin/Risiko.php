@@ -22,6 +22,14 @@ class Risiko extends CI_Controller{
         $this->load->view("admin/risiko/list", $data);
     }
 
+    public function listBawaanMax(){
+
+    }
+
+    public function listSisaMax(){
+        
+    }
+
     public function add(){
         $risiko = $this->risiko_model;
         $validation = $this->form_validation;

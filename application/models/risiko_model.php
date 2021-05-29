@@ -6,7 +6,7 @@ class Risiko_model extends CI_Model{
     private $_table = "risiko"; //nama tabel
 
     public $id;
-    public $klasifikasi_id;
+    public $klasifikasi;
     public $subklasifikasi;
     public $tanggal;
     public $dampak_keterangan;
@@ -32,9 +32,9 @@ class Risiko_model extends CI_Model{
 
     public function rules(){
         return [
-            ['field' => 'klasifikasi_id',
+            ['field' => 'klasifikasi',
             'label' => 'Klasifikasi',
-            'rules' => 'numeric'
+            'rules' => 'required'
             ],
 
             ['field' => 'subklasifikasi',
@@ -49,7 +49,7 @@ class Risiko_model extends CI_Model{
             
             ['field' => 'dampak_nilai',
             'label' => 'Nilai Dampak',
-            'rules' => 'numeric'
+            'rules' => 'required|numeric'
             ],
             
             ['field' => 'pengancam_keterangan',
@@ -59,7 +59,7 @@ class Risiko_model extends CI_Model{
             
             ['field' => 'pengancam_nilai',
             'label' => 'Nilai Pengancam',
-            'rules' => 'numeric'
+            'rules' => 'required|numeric'
             ],
             
             ['field' => 'bawaan_kerentanan_keterangan',
@@ -69,7 +69,7 @@ class Risiko_model extends CI_Model{
             
             ['field' => 'bawaan_kerentanan_nilai',
             'label' => 'Nilai Kerentanan Risiko Bawaan',
-            'rules' => 'numeric'
+            'rules' => 'required|numeric'
             ],
             
             ['field' => 'bawaan_paparan_keterangan',
@@ -79,7 +79,7 @@ class Risiko_model extends CI_Model{
             
             ['field' => 'bawaan_paparan_nilai',
             'label' => 'Nilai Paparan Risiko Bawaan',
-            'rules' => 'numeric'
+            'rules' => 'required|numeric'
             ],
             
             ['field' => 'kontrol_keterangan',
@@ -94,7 +94,7 @@ class Risiko_model extends CI_Model{
             
             ['field' => 'sisa_kerentanan_nilai',
             'label' => 'Nilai Kerentanan Risiko Sisa',
-            'rules' => 'numeric'
+            'rules' => 'required|numeric'
             ],
             
             ['field' => 'sisa_paparan_keterangan',
@@ -104,7 +104,7 @@ class Risiko_model extends CI_Model{
             
             ['field' => 'sisa_paparan_nilai',
             'label' => 'Nilai Paparan Risiko Sisa',
-            'rules' => 'numeric'
+            'rules' => 'required|numeric'
             ],
             
             ['field' => 'mitigasi_kontrol',
@@ -128,6 +128,25 @@ class Risiko_model extends CI_Model{
         return $this->db->get($this->_table)->result();
     }
 
+    public function getInformasi(){
+        return $this->db->get_where($this->_table, ["klasifikasi" => "Informasi"])->result();
+    }
+    public function getOrang(){
+        return $this->db->get_where($this->_table, ["klasifikasi" => "Orang"])->result();
+    }
+    public function getFisik(){
+        return $this->db->get_where($this->_table, ["klasifikasi" => "Fisik"])->result();
+    }
+    public function getLayanan(){
+        return $this->db->get_where($this->_table, ["klasifikasi" => "Layanan"])->result();
+    }
+    public function getIntangible(){
+        return $this->db->get_where($this->_table, ["klasifikasi" => "Intangible"])->result();
+    }
+    public function getSoftware(){
+        return $this->db->get_where($this->_table, ["klasifikasi" => "Software"])->result();
+    }
+
     public function getById($id){
         return $this->db->get_where($this->_table, ["id" => $id])->row();
     }
@@ -135,7 +154,7 @@ class Risiko_model extends CI_Model{
     public function save(){
         $post = $this->input->post();
         $this->id = uniqid();
-        $this->klasifikasi_id = $post["klasifikasi_id"];
+        $this->klasifikasi = $post["klasifikasi"];
         $this->subklasifikasi = $post["subklasifikasi"];
         // $this->tanggal = $post["tanggal"];
         $this->dampak_keterangan = $post["dampak_keterangan"];
@@ -164,7 +183,7 @@ class Risiko_model extends CI_Model{
     public function update(){
         $post = $this->input->post();
         $this->id = $post["id"];
-        $this->klasifikasi_id = $post["klasifikasi_id"];
+        $this->klasifikasi = $post["klasifikasi"];
         $this->subklasifikasi = $post["subklasifikasi"];
         // $this->tanggal = $post["tanggal"];
         $this->dampak_keterangan = $post["dampak_keterangan"];

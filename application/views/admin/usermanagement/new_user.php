@@ -81,7 +81,8 @@
                                         <p class="text-right align-middle">Confirm Password</p>
                                     </div>
                                     <div class="col-lg-6 col-12">
-                                        <input type="password" class="form-control" placeholder="Confirm Password..."> 
+                                        <input class="form-control <?php echo form_error('confirm_password') ? 'is-invalid':'' ?>"
+                                        type="password" name="confirm_password" class="form-control" placeholder="Confirm Password..."> 
                                     </div>
                                 </div>
                                 <div class="form-group row">

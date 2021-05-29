@@ -17,8 +17,8 @@
             <div class="col-12 col-md-5 mx-auto mt-5">
                 <form action="<?= site_url('admin/login') ?>" method="POST">
                     <div class="form-group">
-                        <label for="email">E-mail atau Username</label>
-                        <input type="text" class="form-control" name="email" placeholder="E-mail atau Username..." required/>
+                        <label for="email">E-mail</label>
+                        <input type="text" class="form-control" name="email" placeholder="E-mail..." required/>
                     </div>
                     <div class="form-group">
                         <label for="email">Password</label>

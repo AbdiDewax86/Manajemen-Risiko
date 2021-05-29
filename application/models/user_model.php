@@ -16,11 +16,14 @@ class User_model extends CI_Model{
         if($user){
             // cek password
             $isPasswordTrue = password_verify($post["password"], $user->password);
+            /*
             $isAdmin = $user->role == "admin";
             $isOperator = $user->role == "operator";
+            $isDefault = $user->role == "biasa";
+            */
 
             // cek apakah password benar dan role admin
-            if($isPasswordTrue && $isAdmin){
+            if($isPasswordTrue){
                 // sukses login
                 $this->session->set_userdata(['user_logged' => $user]);
                 $this->_updateLastLogin($user->user_id);
@@ -37,7 +40,8 @@ class User_model extends CI_Model{
     }
 
     public function _updateLastLogin($user_id){
-        $sql = "UPDATE {$this->_table} SET last_login=now() WHERE user_id={$user_id}";
+        $sql = "UPDATE {$this->_table} SET lastlogin=now() WHERE user_id={$user_id}";
+        $this->db->query($sql);
     }
 }
 

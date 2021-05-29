@@ -62,8 +62,15 @@
                                         <p class="text-right align-middle">Klasifikasi</p>
                                     </div>
                                     <div class="col-lg-6 col-12">
-                                        <input class="form-control <?php echo form_error('klasifikasi_id') ? 'is-invalid':'' ?>" 
-                                        type="number" name="klasifikasi_id" placeholder="1-6..." value="<?php echo $risiko->klasifikasi_id ?>"> 
+                                        <select class="form-control <?php echo form_error('klasifikasi') ? 'is-invalid':'' ?>" 
+                                        name="klasifikasi" value="<?php echo $risiko->klasifikasi ?>">
+                                            <option>Informasi</option>
+                                            <option>Orang</option>
+                                            <option>Fisik</option>
+                                            <option>Layanan</option>
+                                            <option>Intangible</option>
+                                            <option>Software</option>
+                                        </select>
                                     </div>
                                 </div>
                                 <div class="form-group row">

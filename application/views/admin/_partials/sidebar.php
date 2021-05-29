@@ -17,11 +17,14 @@
     <!-- Divider -->
     <hr class="sidebar-divider">
     <!-- Nav Item - Pages Collapse Menu -->
+    
+    <?php if ($this->session->userdata('role') == 'admin'): ?>
+	<?php endif; ?>
+    <!-- Nav Item - Utilities Collapse Menu -->
     <li class="nav-item">
         <a class="nav-link" href="<?php echo site_url('admin/usermanagement') ?>">
             <span>Manajemen User</span></a>
     </li>
-    <!-- Nav Item - Utilities Collapse Menu -->
     <li class="nav-item">
         <a class="nav-link" href="<?php echo site_url('admin/risiko') ?>">
             <span>Manajemen Subklasifikasi</span></a>

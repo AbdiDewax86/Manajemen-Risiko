@@ -42,7 +42,7 @@
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                     <thead class="text-center">
                                         <tr>
-                                            <th rowspan="3">ID Klasifikasi</th>
+                                            <th rowspan="3">Klasifikasi</th>
                                             <th rowspan="3">Subklasifikasi</th>
                                             <th rowspan="3">Tanggal</th>
                                             <th rowspan="2" colspan="2">Dampak</th>
@@ -85,7 +85,7 @@
                                         <?php foreach ($risiko as $risiko_s): ?>
 									    <tr>
 									    	<td width="150">
-									    		<?php echo $risiko_s->klasifikasi_id ?>
+									    		<?php echo $risiko_s->klasifikasi ?>
 									    	</td>
 
 									    	<td>

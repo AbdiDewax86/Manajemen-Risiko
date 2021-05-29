@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 25, 2021 at 05:57 PM
+-- Generation Time: May 29, 2021 at 06:08 PM
 -- Server version: 10.4.18-MariaDB
 -- PHP Version: 8.0.3
 
@@ -20,29 +20,6 @@ SET time_zone = "+00:00";
 --
 -- Database: `manajemen_resiko`
 --
-
--- --------------------------------------------------------
-
---
--- Table structure for table `klasifikasi`
---
-
-CREATE TABLE `klasifikasi` (
-  `id` int(1) NOT NULL,
-  `nama` varchar(200) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `klasifikasi`
---
-
-INSERT INTO `klasifikasi` (`id`, `nama`) VALUES
-(1, 'Informasi'),
-(2, 'Orang'),
-(3, 'Fisik'),
-(4, 'Layanan'),
-(5, 'Intangible'),
-(6, 'Software');
 
 -- --------------------------------------------------------
 
@@ -70,23 +47,25 @@ CREATE TABLE `risiko` (
   `mitigasi_pic` text DEFAULT NULL,
   `mitigasi_target` text DEFAULT NULL,
   `subklasifikasi` text DEFAULT NULL,
-  `klasifikasi_id` int(1) DEFAULT NULL,
   `bawaan_paparan_keterangan` text DEFAULT NULL,
   `bawaan_paparan_nilai` int(1) DEFAULT NULL,
   `sisa_kerentanan_keterangan` text DEFAULT NULL,
-  `sisa_kerentanan_nilai` int(1) DEFAULT NULL
+  `sisa_kerentanan_nilai` int(1) DEFAULT NULL,
+  `klasifikasi` enum('Informasi','Orang','Fisik','Layanan','Intangible','Software') DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `risiko`
 --
 
-INSERT INTO `risiko` (`id`, `tanggal`, `dampak_keterangan`, `dampak_nilai`, `pengancam_keterangan`, `pengancam_nilai`, `bawaan_kerentanan_keterangan`, `bawaan_kerentanan_nilai`, `bawaan_jenis_risiko`, `bawaan_nilai_risiko`, `kontrol_keterangan`, `sisa_paparan_keterangan`, `sisa_paparan_nilai`, `sisa_jenis_risiko`, `sisa_nilai_risiko`, `mitigasi_kontrol`, `mitigasi_pic`, `mitigasi_target`, `subklasifikasi`, `klasifikasi_id`, `bawaan_paparan_keterangan`, `bawaan_paparan_nilai`, `sisa_kerentanan_keterangan`, `sisa_kerentanan_nilai`) VALUES
-('2', '2021-05-25', 'dampak 3', 1, 'pengancam 3', 2, 'kerentanan bawaan', 3, 3, NULL, 'kontrol', 'paparan sisa', 4, 4, NULL, 'mitigasi kontrol', 'mitigasi pic', 'mitigasi target', 'subklasifikasi 3', 1, 'paparan bawaan', 1, 'kerentanan sisa', 2),
-('60a7ceb78e615', NULL, 'a', 2, 's', 3, 'd', 4, NULL, NULL, 'g', 'j', 2, NULL, NULL, 'k', 'l', ';', 'Test Subklasifikasi', 1, 'f', 5, 'h', 1),
-('60a7cf3bca784', NULL, 'a', 1, 's', 5, 'd', 4, NULL, NULL, 'g', 'j', 1, NULL, NULL, 'k', 'l', ';', 'Test Subklasifikasi', 6, 'f', 3, 'h', 2),
-('60a7d04dc8c05', NULL, 'Keterangan Dampak', 1, 'Keterangan Pengancam', 2, 'Keterangan Kerentanan Bawaan', 3, NULL, NULL, 'Keterangan Kontrol', 'Keterangan Paparan Sisa', 1, NULL, NULL, 'Mitigasi Kontrol', 'Mitigasi PIC', 'Mitigasi Target', 'Test Subklasifikasi', 2, 'Nilai Kerentanan Bawaan', 4, 'Keterangan Kerentanan Sisa', 5),
-('testId', NULL, 'test keterangan dampak', 5, 'test keterangan pengancam', 5, 'test keterangan kerentanan bawaan', 5, 5, 100, 'test keterangan kontrol', 'test keterangan paparan sisa', 5, 5, 100, 'test mitigasi kontrol', 'test mitigasi PIC', 'test mitigasi target', 'test subklasifikasi', NULL, 'test keterangan paparan bawaan', 5, 'test keterangan kerentanan sisa', 5);
+INSERT INTO `risiko` (`id`, `tanggal`, `dampak_keterangan`, `dampak_nilai`, `pengancam_keterangan`, `pengancam_nilai`, `bawaan_kerentanan_keterangan`, `bawaan_kerentanan_nilai`, `bawaan_jenis_risiko`, `bawaan_nilai_risiko`, `kontrol_keterangan`, `sisa_paparan_keterangan`, `sisa_paparan_nilai`, `sisa_jenis_risiko`, `sisa_nilai_risiko`, `mitigasi_kontrol`, `mitigasi_pic`, `mitigasi_target`, `subklasifikasi`, `bawaan_paparan_keterangan`, `bawaan_paparan_nilai`, `sisa_kerentanan_keterangan`, `sisa_kerentanan_nilai`, `klasifikasi`) VALUES
+('60b23aabac81d', NULL, 'info_testdampak', 1, 'info_testpengancam', 2, 'info_testkerentananbawaan', 3, NULL, NULL, 'info_testkontrol', 'info_testpaparansisa', 1, NULL, NULL, 'info_mitigasikontrol', 'info_mitigasipic', 'info_mitigasitarget', 'info_testsubklasifikasi', 'info_testpaparanbawaan', 4, 'info_testkerentanansisa', 5, 'Informasi'),
+('60b240c85bb3d', NULL, 'orang_testdampak', 2, 'orang_testpengancam', 3, 'orang_testkerentananbawaan', 4, NULL, NULL, 'orang_testkontrol', 'orang_testpaparansisa', 2, NULL, NULL, 'orang_mitigasikontrol', 'orang_mitigasipic', 'orang_mitigasitarget', 'orang_testsubklasifikasi', 'orang_testpaparanbawaan', 5, 'orang_testkerentanansisa', 1, 'Orang'),
+('60b24125a2b9a', NULL, 'fisik_testdampak', 3, 'fisik_testpengancam', 4, 'fisik_testkerentananbawaan', 5, NULL, NULL, 'fisik_testkontrol', 'fisik_testpaparansisa', 3, NULL, NULL, 'fisik_mitigasikontrol', 'fisik_mitigasipic', 'fisik_mitigasitarget', 'fisik_testsubklasifikasi', 'fisik_testpaparanbawaan', 1, 'fisik_testkerentanansisa', 2, 'Fisik'),
+('60b24179133a6', NULL, 'layanan_testdampak', 4, 'layanan_testpengancam', 5, 'layanan_testkerentananbawaan', 1, NULL, NULL, 'layanan_testkontrol', 'layanan_testpaparansisa', 4, NULL, NULL, 'layanan_mitigasikontrol', 'layanan_mitigasipic', 'layanan_mitigasitarget', 'layanan_testsubklasifikasi', 'layanan_testpaparanbawaan', 2, 'layanan_testkerentanansisa', 3, 'Layanan'),
+('60b241c2a0dce', NULL, 'intangible_testdampak', 5, 'intangible_testpengancam', 1, 'intangible_testkerentananbawaan', 2, NULL, NULL, 'intangible_testkontrol', 'intangible_testpaparansisa', 5, NULL, NULL, 'intangible_mitigasikontrol', 'intangible_mitigasipic', 'intangible_mitigasitarget', 'intangible_testsubklasifikasi', 'intangible_testpaparanbawaan', 3, 'intangible_testkerentanansisa', 4, 'Intangible'),
+('60b24209529be', NULL, 'software_testdampak', 5, 'software_testpengancam', 4, 'software_testkerentananbawaan', 3, NULL, NULL, 'software_testkontrol', 'software_testpaparansisa', 5, NULL, NULL, 'software_mitigasikontrol', 'software_mitigasipic', 'software_mitigasitarget', 'software_testsubklasifikasi', 'software_testpaparanbawaan', 2, 'software_testkerentanansisa', 1, 'Software'),
+('testId', NULL, 'test keterangan dampak', 5, 'test keterangan pengancam', 5, 'test keterangan kerentanan bawaan', 5, 5, 100, 'test keterangan kontrol', 'test keterangan paparan sisa', 5, 5, 100, 'test mitigasi kontrol', 'test mitigasi PIC', 'test mitigasi target', 'test subklasifikasi', 'test keterangan paparan bawaan', 5, 'test keterangan kerentanan sisa', 5, NULL);
 
 -- --------------------------------------------------------
 
@@ -100,12 +79,12 @@ CREATE TABLE `users` (
   `password` varchar(255) NOT NULL,
   `role` enum('biasa','operator','admin') NOT NULL DEFAULT 'biasa',
   `email` varchar(255) NOT NULL,
-  `akses_informasi` tinyint(1) NOT NULL DEFAULT 0,
-  `akses_orang` tinyint(1) NOT NULL DEFAULT 0,
-  `akses_fisik` tinyint(1) NOT NULL DEFAULT 0,
-  `akses_layanan` tinyint(1) NOT NULL DEFAULT 0,
-  `akses_intangible` tinyint(1) NOT NULL DEFAULT 0,
-  `akses_software` tinyint(1) NOT NULL DEFAULT 0,
+  `akses_informasi` tinyint(1) DEFAULT 0,
+  `akses_orang` tinyint(1) DEFAULT 0,
+  `akses_fisik` tinyint(1) DEFAULT 0,
+  `akses_layanan` tinyint(1) DEFAULT 0,
+  `akses_intangible` tinyint(1) DEFAULT 0,
+  `akses_software` tinyint(1) DEFAULT 0,
   `fullname` varchar(255) NOT NULL,
   `phone` varchar(20) NOT NULL,
   `lastlogin` timestamp NOT NULL DEFAULT current_timestamp(),
@@ -117,26 +96,22 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`user_id`, `username`, `password`, `role`, `email`, `akses_informasi`, `akses_orang`, `akses_fisik`, `akses_layanan`, `akses_intangible`, `akses_software`, `fullname`, `phone`, `lastlogin`, `creationtime`) VALUES
-(1, 'testadmin', '$2y$10$5vLgiNgNKAX/4uHPs912ru30O2zSX2zKgm1CSjTaqFeCieomLpFVa', 'admin', 'admin@gmail.com', 1, 1, 1, 1, 1, 1, 'Test Admin', '088812345678', '2021-05-23 14:53:51', '2021-05-23 14:53:51'),
-(2, 'testoperator', '$2y$10$HK7xsjK5tyKytoGE/lkOM.G0BfJeOt59JrqbFSUc8b8ctLa3n0SO2', 'operator', 'operator@gmail.com', 1, 1, 0, 1, 0, 0, 'Operator', '088823456789', '2021-05-25 12:12:42', '2021-05-25 12:12:42'),
-(3, 'testbiasa', '$2y$10$vpLWny4IpDSMA6dpDjpXSOYzcxUD/grKKiWspFUIddzA0QJeYAQF.', 'biasa', 'biasa@gmail.com', 1, 0, 1, 0, 1, 0, 'Pejabat', '0', '2021-05-25 12:12:42', '2021-05-25 12:12:42');
+(1, 'testadmin', '$2y$10$5vLgiNgNKAX/4uHPs912ru30O2zSX2zKgm1CSjTaqFeCieomLpFVa', 'admin', 'admin@gmail.com', 1, 1, 1, 1, 1, 1, 'Test Admin', '088812345678', '2021-05-29 15:51:01', '2021-05-23 14:53:51'),
+(2, 'testoperator', '$2y$10$HK7xsjK5tyKytoGE/lkOM.G0BfJeOt59JrqbFSUc8b8ctLa3n0SO2', 'operator', 'operator@gmail.com', 1, 1, 0, 1, 0, 0, 'Operator', '088823456789', '2021-05-29 15:44:29', '2021-05-25 12:12:42'),
+(3, 'testbiasa', '$2y$10$vpLWny4IpDSMA6dpDjpXSOYzcxUD/grKKiWspFUIddzA0QJeYAQF.', 'biasa', 'biasa@gmail.com', 1, 0, 1, 0, 1, 0, 'Pejabat', '0', '2021-05-25 12:12:42', '2021-05-25 12:12:42'),
+(4, 'testusername', 'testpassword', 'operator', 'testemail@gmail.com', 0, NULL, 0, 0, NULL, NULL, 'testfullname', '088812344321', '2021-05-28 16:51:09', '2021-05-28 16:51:09'),
+(5, 'testusername2', 'testpassword', 'biasa', 'testemail2@gmail.com', 1, 0, 1, 0, 1, 0, 'testfullname2', '088812344322', '2021-05-28 16:57:58', '2021-05-28 16:57:58'),
+(6, 'testusername3', 'testpw', 'biasa', 'testemail3@gmail.com', 1, 0, 0, 0, 0, 0, 'testfullname3', '088812344323', '2021-05-29 12:12:33', '2021-05-29 12:12:33');
 
 --
 -- Indexes for dumped tables
 --
 
 --
--- Indexes for table `klasifikasi`
---
-ALTER TABLE `klasifikasi`
-  ADD PRIMARY KEY (`id`);
-
---
 -- Indexes for table `risiko`
 --
 ALTER TABLE `risiko`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `fk_klasifikasi_id` (`klasifikasi_id`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `users`
@@ -149,26 +124,10 @@ ALTER TABLE `users`
 --
 
 --
--- AUTO_INCREMENT for table `klasifikasi`
---
-ALTER TABLE `klasifikasi`
-  MODIFY `id` int(1) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
-
---
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
-
---
--- Constraints for dumped tables
---
-
---
--- Constraints for table `risiko`
---
-ALTER TABLE `risiko`
-  ADD CONSTRAINT `fk_klasifikasi_id` FOREIGN KEY (`klasifikasi_id`) REFERENCES `klasifikasi` (`id`);
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -53,8 +53,15 @@
                                         <p class="text-right align-middle">Klasifikasi</p>
                                     </div>
                                     <div class="col-lg-6 col-12">
-                                        <input class="form-control <?php echo form_error('klasifikasi_id') ? 'is-invalid':'' ?>" 
-                                        type="number" name="klasifikasi_id" placeholder="1-6..."> 
+                                        <select class="form-control <?php echo form_error('klasifikasi') ? 'is-invalid':'' ?>" 
+                                        name="klasifikasi">
+                                            <option>Informasi</option>
+                                            <option>Orang</option>
+                                            <option>Fisik</option>
+                                            <option>Layanan</option>
+                                            <option>Intangible</option>
+                                            <option>Software</option>
+                                        </select>
                                     </div>
                                 </div>
                                 <div class="form-group row">
@@ -81,8 +88,14 @@
                                         <p class="text-right align-middle">Nilai</p>
                                     </div>
                                     <div class="col-lg-6 col-12">
-                                        <input class="form-control <?php echo form_error('dampak_nilai') ? 'is-invalid':'' ?>" 
-                                        type="number" name="dampak_nilai" placeholder="1-5..."> 
+                                        <select class="form-control <?php echo form_error('dampak_nilai') ? 'is-invalid':'' ?>" 
+                                        name="dampak_nilai">
+                                            <option>1</option>
+                                            <option>2</option>
+                                            <option>3</option>
+                                            <option>4</option>
+                                            <option>5</option>
+                                        </select>
                                     </div>
                                 </div>
                                 <h4>Pengancam</h4>
@@ -100,8 +113,14 @@
                                         <p class="text-right align-middle">Nilai</p>
                                     </div>
                                     <div class="col-lg-6 col-12">
-                                        <input class="form-control <?php echo form_error('pengancam_nilai') ? 'is-invalid':'' ?>" 
-                                        type="number" name="pengancam_nilai" placeholder="1-5..."> 
+                                        <select class="form-control <?php echo form_error('pengancam_nilai') ? 'is-invalid':'' ?>" 
+                                        name="pengancam_nilai">
+                                            <option>1</option>
+                                            <option>2</option>
+                                            <option>3</option>
+                                            <option>4</option>
+                                            <option>5</option>
+                                        </select>
                                     </div>
                                 </div>
                                 <h4>Risiko Bawaan</h4>
@@ -120,8 +139,14 @@
                                         <p class="text-right align-middle">Nilai</p>
                                     </div>
                                     <div class="col-lg-6 col-12">
-                                        <input class="form-control <?php echo form_error('bawaan_kerentanan_nilai') ? 'is-invalid':'' ?>" 
-                                        type="number" name="bawaan_kerentanan_nilai" placeholder="1-5..."> 
+                                        <select class="form-control <?php echo form_error('bawaan_kerentanan_nilai') ? 'is-invalid':'' ?>" 
+                                        name="bawaan_kerentanan_nilai">
+                                            <option>1</option>
+                                            <option>2</option>
+                                            <option>3</option>
+                                            <option>4</option>
+                                            <option>5</option>
+                                        </select>
                                     </div>
                                 </div>
                                 <h5>Paparan</h5>
@@ -139,8 +164,14 @@
                                         <p class="text-right align-middle">Nilai</p>
                                     </div>
                                     <div class="col-lg-6 col-12">
-                                        <input class="form-control <?php echo form_error('bawaan_paparan_nilai') ? 'is-invalid':'' ?>" 
-                                        type="number" name="bawaan_paparan_nilai" placeholder="1-5..."> 
+                                        <select class="form-control <?php echo form_error('bawaan_paparan_nilai') ? 'is-invalid':'' ?>" 
+                                        name="bawaan_paparan_nilai">
+                                            <option>1</option>
+                                            <option>2</option>
+                                            <option>3</option>
+                                            <option>4</option>
+                                            <option>5</option>
+                                        </select>
                                     </div>
                                 </div>
                                 <h4>Kontrol</h4>
@@ -169,8 +200,14 @@
                                         <p class="text-right align-middle">Nilai</p>
                                     </div>
                                     <div class="col-lg-6 col-12">
-                                        <input class="form-control <?php echo form_error('sisa_kerentanan_nilai') ? 'is-invalid':'' ?>" 
-                                        type="number" name="sisa_kerentanan_nilai" placeholder="1-5..."> 
+                                        <select class="form-control <?php echo form_error('sisa_kerentanan_nilai') ? 'is-invalid':'' ?>" 
+                                        name="sisa_kerentanan_nilai">
+                                            <option>1</option>
+                                            <option>2</option>
+                                            <option>3</option>
+                                            <option>4</option>
+                                            <option>5</option>
+                                        </select>
                                     </div>
                                 </div>
                                 <h5>Paparan</h5>
@@ -188,8 +225,14 @@
                                         <p class="text-right align-middle">Nilai</p>
                                     </div>
                                     <div class="col-lg-6 col-12">
-                                        <input class="form-control <?php echo form_error('sisa_paparan_nilai') ? 'is-invalid':'' ?>" 
-                                        type="number" name="sisa_paparan_nilai" placeholder="1-5..."> 
+                                        <select class="form-control <?php echo form_error('sisa_paparan_nilai') ? 'is-invalid':'' ?>" 
+                                        name="sisa_paparan_nilai">
+                                            <option>1</option>
+                                            <option>2</option>
+                                            <option>3</option>
+                                            <option>4</option>
+                                            <option>5</option>
+                                        </select>
                                     </div>
                                 </div>
                                 <h4>Mitigasi</h4>

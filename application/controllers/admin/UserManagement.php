@@ -26,6 +26,7 @@ Class UserManagement extends CI_Controller{
         $users = $this->usermanagement_model;
         $validation = $this->form_validation;
         $validation->set_rules($users->rules());
+        $validation->set_rules('confirm_password','Confirm Password','required|matches[password]');
 
         if($validation->run()){
             $users->save();
