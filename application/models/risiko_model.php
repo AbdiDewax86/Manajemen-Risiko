@@ -147,6 +147,10 @@ class Risiko_model extends CI_Model{
         return $this->db->get_where($this->_table, ["klasifikasi" => "Software"])->result();
     }
 
+    public function getByKlasifikasi($klasifikasi){
+        return $this->db->get_where($this->_table, ["klasifikasi" => $klasifikasi])->result();
+    }
+
     public function getById($id){
         return $this->db->get_where($this->_table, ["id" => $id])->row();
     }
