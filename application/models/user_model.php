@@ -2,13 +2,15 @@
 
 class User_model extends CI_Model{
     private $_table = "users";
+    // private $role = "admin";
 
     public function doLogin(){
         $post = $this->input->post();
 
         // cari dari uname/email
         $this->db->where('email', $post["email"])
-            ->or_where('username', $post["username"]);
+            //->or_where('username', $post["username"])
+            ;
         
         $user = $this->db->get($this->_table)->row();
 
@@ -16,11 +18,10 @@ class User_model extends CI_Model{
         if($user){
             // cek password
             $isPasswordTrue = password_verify($post["password"], $user->password);
-            /*
+            
             $isAdmin = $user->role == "admin";
             $isOperator = $user->role == "operator";
             $isDefault = $user->role == "biasa";
-            */
 
             // cek apakah password benar dan role admin
             if($isPasswordTrue){
@@ -34,6 +35,10 @@ class User_model extends CI_Model{
         // login gagal
         return false;
     }
+
+    // public function getRole(){
+    //     return $this->role;
+    // }
 
     public function isNotLogin(){
         return $this->session->userdata('user_logged') === null;

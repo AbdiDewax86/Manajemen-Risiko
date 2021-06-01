@@ -13,7 +13,8 @@ class Overview extends CI_Controller {
 	public function index()
 	{
         $data["risiko"] = $this->risiko_model->getAll();
-		$this->load->view('admin/overview');
+        // $data["role"] = $this->user_model->getRole();
+		$this->load->view('admin/overview', $data);
 	}
 
     // Klasifikasi
