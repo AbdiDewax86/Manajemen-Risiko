@@ -24,8 +24,21 @@ class Risiko extends CI_Controller{
     }
 
     public function list(){
-        $data["risiko"] = $this->risiko_model->getAll();
-        $this->load->view("admin/risiko/list", $data);
+        if ($this->session->user_logged->role == 'admin'){  
+            $data["risiko"] = $this->risiko_model->getAll();
+            $this->load->view("admin/risiko/list", $data);
+        }
+        else{
+            $data["risiko"] = $this->risiko_model->getList(
+                $this->session->user_logged->akses_informasi,
+                $this->session->user_logged->akses_orang,
+                $this->session->user_logged->akses_fisik,
+                $this->session->user_logged->akses_layanan,
+                $this->session->user_logged->akses_intangible,
+                $this->session->user_logged->akses_software,
+            );
+            $this->load->view("admin/risiko/list", $data);
+        }
     }
 
     public function listBawaanMax(){
@@ -37,42 +50,50 @@ class Risiko extends CI_Controller{
     }
 
     public function add(){
-        $risiko = $this->risiko_model;
-        $validation = $this->form_validation;
-        $validation->set_rules($risiko->rules());
-
-        if($validation->run()){
-            $risiko->save();
-            $this->session->set_flashdata('success', 'Berhasil disimpan');
+        if ($this->session->user_logged->role == 'biasa') show_404();
+        else{
+            $risiko = $this->risiko_model;
+            $validation = $this->form_validation;
+            $validation->set_rules($risiko->rules());
+    
+            if($validation->run()){
+                $risiko->save();
+                $this->session->set_flashdata('success', 'Berhasil disimpan');
+            }
+    
+            $this->load->view("admin/risiko/new_form");
         }
-
-        $this->load->view("admin/risiko/new_form");
     }
 
     public function edit($id = null){
-        if (!isset($id)) redirect('admin/risiko');
-
-        $risiko = $this->risiko_model;
-        $validation = $this->form_validation;
-        $validation->set_rules($risiko->rules());
-
-        if ($validation->run()) {
-            $risiko->update();
-            $this->session->set_flashdata('success', 'Berhasil disimpan');
+        if ($this->session->user_logged->role == 'biasa') show_404();
+        else{
+            if (!isset($id)) redirect('admin/risiko');
+    
+            $risiko = $this->risiko_model;
+            $validation = $this->form_validation;
+            $validation->set_rules($risiko->rules());
+    
+            if ($validation->run()) {
+                $risiko->update();
+                $this->session->set_flashdata('success', 'Berhasil disimpan');
+            }
+    
+            $data["risiko"] = $risiko->getById($id);
+            if (!$data["risiko"]) show_404();
+    
+            $this->load->view("admin/risiko/edit_form", $data);
         }
-
-        $data["risiko"] = $risiko->getById($id);
-        if (!$data["risiko"]) show_404();
-
-        $this->load->view("admin/risiko/edit_form", $data);
     }
 
     public function delete($id = null){
-        
-        if (!isset($id)) show_404();
-
-        if ($this->risiko_model->delete($id)){
-            redirect(site_url('admin/risiko'));
+        if ($this->session->user_logged->role == 'biasa') show_404();
+        else{
+            if (!isset($id)) show_404();
+    
+            if ($this->risiko_model->delete($id)){
+                redirect(site_url('admin/risiko'));
+            }
         }
     }
 

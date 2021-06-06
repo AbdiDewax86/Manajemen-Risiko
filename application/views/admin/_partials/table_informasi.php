@@ -15,7 +15,9 @@
                         <th rowspan="3">Kontrol</th>
                         <th colspan="6">Identifikasi Risiko Bawaan</th>
                         <th rowspan="2" colspan="3">Mitigasi</th>
-                        <th rowspan="3">Kelola</th>
+                        <?php if ($this->session->user_logged->role != 'biasa'): ?>
+                            <th rowspan="3">Kelola</th>
+	                    <?php endif; ?>
                     </tr>
                     <tr>
                         <th colspan="2">Kerentanan</th>
@@ -115,12 +117,14 @@
 				    	<td class="small">
 				    		<?php echo $risiko_s->mitigasi_target ?>
 				    	</td width="250">
-                        <td>
-				    		<a href="<?php echo site_url('admin/risiko/edit/'.$risiko_s->id) ?>"
-				    		 class="btn btn-small"><i class="fas fa-edit"></i> Edit</a>
-				    		<a onclick="deleteConfirm('<?php echo site_url('admin/risiko/delete/'.$risiko_s->id) ?>')"
-				    		 href="#!" class="btn btn-small text-danger"><i class="fas fa-trash"></i> Hapus</a>
-				    	</td>
+                        <?php if ($this->session->user_logged->role != 'biasa'): ?>
+                            <td>
+						    	<a href="<?php echo site_url('admin/risiko/edit/'.$risiko_s->id) ?>"
+						    	 class="btn btn-small"><i class="fas fa-edit"></i> Edit</a>
+						    	<a onclick="deleteConfirm('<?php echo site_url('admin/risiko/delete/'.$risiko_s->id) ?>')"
+						    	 href="#!" class="btn btn-small text-danger"><i class="fas fa-trash"></i> Hapus</a>
+						    </td>
+	                    <?php endif; ?>
 				    </tr>
 				    <?php endforeach; ?>
                 </tbody>

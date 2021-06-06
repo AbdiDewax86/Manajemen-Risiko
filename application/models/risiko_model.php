@@ -49,7 +49,7 @@ class Risiko_model extends CI_Model{
             
             ['field' => 'dampak_nilai',
             'label' => 'Nilai Dampak',
-            'rules' => 'required|numeric'
+            'rules' => 'required|numeric|greater_than[0]|less_than[6]'
             ],
             
             ['field' => 'pengancam_keterangan',
@@ -59,7 +59,7 @@ class Risiko_model extends CI_Model{
             
             ['field' => 'pengancam_nilai',
             'label' => 'Nilai Pengancam',
-            'rules' => 'required|numeric'
+            'rules' => 'required|numeric|greater_than[0]|less_than[6]'
             ],
             
             ['field' => 'bawaan_kerentanan_keterangan',
@@ -69,7 +69,7 @@ class Risiko_model extends CI_Model{
             
             ['field' => 'bawaan_kerentanan_nilai',
             'label' => 'Nilai Kerentanan Risiko Bawaan',
-            'rules' => 'required|numeric'
+            'rules' => 'required|numeric|greater_than[0]|less_than[6]'
             ],
             
             ['field' => 'bawaan_paparan_keterangan',
@@ -79,7 +79,7 @@ class Risiko_model extends CI_Model{
             
             ['field' => 'bawaan_paparan_nilai',
             'label' => 'Nilai Paparan Risiko Bawaan',
-            'rules' => 'required|numeric'
+            'rules' => 'required|numeric|greater_than[0]|less_than[6]'
             ],
             
             ['field' => 'kontrol_keterangan',
@@ -94,7 +94,7 @@ class Risiko_model extends CI_Model{
             
             ['field' => 'sisa_kerentanan_nilai',
             'label' => 'Nilai Kerentanan Risiko Sisa',
-            'rules' => 'required|numeric'
+            'rules' => 'required|numeric|greater_than[0]|less_than[6]'
             ],
             
             ['field' => 'sisa_paparan_keterangan',
@@ -104,7 +104,7 @@ class Risiko_model extends CI_Model{
             
             ['field' => 'sisa_paparan_nilai',
             'label' => 'Nilai Paparan Risiko Sisa',
-            'rules' => 'required|numeric'
+            'rules' => 'required|numeric|greater_than[0]|less_than[6]'
             ],
             
             ['field' => 'mitigasi_kontrol',
@@ -125,6 +125,29 @@ class Risiko_model extends CI_Model{
     }
 
     public function getAll(){
+        return $this->db->get($this->_table)->result();
+    }
+    public function getList($informasi, $orang, $fisik, $layanan, $intangible, $software){
+        $this->db->select("*");
+        if(!$informasi){
+            $this->db->where("klasifikasi !=", "Informasi");
+        }
+        if(!$orang){
+            $this->db->where("klasifikasi !=", "Orang");
+        }
+        if(!$fisik){
+            $this->db->where("klasifikasi !=", "Fisik");
+        }
+        if(!$layanan){
+            $this->db->where("klasifikasi !=", "Layanan");
+        }
+        if(!$intangible){
+            $this->db->where("klasifikasi !=", "Intangible");
+        }
+        if(!$software){
+            $this->db->where("klasifikasi !=", "Software");
+        }
+
         return $this->db->get($this->_table)->result();
     }
 

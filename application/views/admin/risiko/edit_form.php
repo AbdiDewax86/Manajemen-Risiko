@@ -64,12 +64,24 @@
                                     <div class="col-lg-6 col-12">
                                         <select class="form-control <?php echo form_error('klasifikasi') ? 'is-invalid':'' ?>" 
                                         name="klasifikasi" value="<?php echo $risiko->klasifikasi ?>">
-                                            <option>Informasi</option>
-                                            <option>Orang</option>
-                                            <option>Fisik</option>
-                                            <option>Layanan</option>
-                                            <option>Intangible</option>
-                                            <option>Software</option>
+                                            <?php if ($this->session->user_logged->role == 'admin' || $this->session->user_logged->akses_informasi): ?>
+                                                <option>Informasi</option>
+                                            <?php endif; ?>
+                                            <?php if ($this->session->user_logged->role == 'admin' || $this->session->user_logged->akses_orang): ?>
+                                                <option>Orang</option>
+                                            <?php endif; ?>
+                                            <?php if ($this->session->user_logged->role == 'admin' || $this->session->user_logged->akses_fisik): ?>
+                                                <option>Fisik</option>
+                                            <?php endif; ?>
+                                            <?php if ($this->session->user_logged->role == 'admin' || $this->session->user_logged->akses_layanan): ?>
+                                                <option>Layanan</option>
+                                            <?php endif; ?>
+                                            <?php if ($this->session->user_logged->role == 'admin' || $this->session->user_logged->akses_intangible): ?>
+                                                <option>Intangible</option>
+                                            <?php endif; ?>
+                                            <?php if ($this->session->user_logged->role == 'admin' || $this->session->user_logged->akses_software): ?>
+                                                <option>Software</option>
+                                            <?php endif; ?>
                                         </select>
                                     </div>
                                 </div>

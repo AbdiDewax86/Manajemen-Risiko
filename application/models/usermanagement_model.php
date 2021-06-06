@@ -51,6 +51,8 @@ class UserManagement_model extends CI_Model{
     }
 
     public function getAll(){
+        $this->db->select("*");
+        $this->db->where("role !=", 'admin');
         return $this->db->get($this->_table)->result();
     }
 

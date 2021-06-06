@@ -44,6 +44,10 @@ class User_model extends CI_Model{
         return $this->session->userdata('user_logged') === null;
     }
 
+    public function getUserData(){
+        return $this->session->user_logged;
+    }
+
     public function _updateLastLogin($user_id){
         $sql = "UPDATE {$this->_table} SET lastlogin=now() WHERE user_id={$user_id}";
         $this->db->query($sql);

@@ -18,44 +18,59 @@
     <hr class="sidebar-divider">
     <!-- Nav Item - Pages Collapse Menu -->
     
-    <?php if ($this->session->userdata('role') == 'admin'): ?>
+    <?php if ($this->session->user_logged->role == 'admin'): ?>
+        <li class="nav-item">
+            <a class="nav-link" href="<?php echo site_url('admin/usermanagement') ?>">
+                <span>Manajemen User</span></a>
+        </li>
 	<?php endif; ?>
     <!-- Nav Item - Utilities Collapse Menu -->
-    <li class="nav-item">
-        <a class="nav-link" href="<?php echo site_url('admin/usermanagement') ?>">
-            <span>Manajemen User</span></a>
-    </li>
-    <li class="nav-item">
-        <a class="nav-link" href="<?php echo site_url('admin/risiko') ?>">
-            <span>Manajemen Subklasifikasi</span></a>
-    </li>
+    <?php if ($this->session->user_logged->role != 'biasa'): ?>
+        <li class="nav-item">
+            <a class="nav-link" href="<?php echo site_url('admin/risiko') ?>">
+                <span>Manajemen Subklasifikasi</span></a>
+        </li>
+	<?php endif; ?>
     <!-- Divider -->
     <hr class="sidebar-divider">
     <!-- Nav Item - Pages Collapse Menu -->
-    <li class="nav-item">
-        <a class="nav-link" href="<?php echo site_url('admin/overview/informasi') ?>">
-            <span>Informasi</span></a>
-    </li>
-    <li class="nav-item">
-        <a class="nav-link" href="<?php echo site_url('admin/overview/orang') ?>">
-            <span>Orang</span></a>
-    </li>
-    <li class="nav-item">
-        <a class="nav-link" href="<?php echo site_url('admin/overview/fisik') ?>">
-            <span>Fisik</span></a>
-    </li>
-    <li class="nav-item">
-        <a class="nav-link" href="<?php echo site_url('admin/overview/layanan') ?>">
-            <span>Layanan</span></a>
-    </li>
-    <li class="nav-item">
-        <a class="nav-link" href="<?php echo site_url('admin/overview/intangible') ?>">
-            <span>Intangible</span></a>
-    </li>
-    <li class="nav-item">
-        <a class="nav-link" href="<?php echo site_url('admin/overview/software') ?>">
-            <span>Software</span></a>
-    </li>
+    <?php if ($this->session->user_logged->role == 'admin' || $this->session->user_logged->akses_informasi): ?>
+        <li class="nav-item">
+            <a class="nav-link" href="<?php echo site_url('admin/overview/informasi') ?>">
+                <span>Informasi</span></a>
+        </li>
+	<?php endif; ?>
+    <?php if ($this->session->user_logged->role == 'admin' || $this->session->user_logged->akses_orang): ?>
+        <li class="nav-item">
+            <a class="nav-link" href="<?php echo site_url('admin/overview/orang') ?>">
+                <span>Orang</span></a>
+        </li>
+	<?php endif; ?>
+    <?php if ($this->session->user_logged->role == 'admin' || $this->session->user_logged->akses_fisik): ?>
+        <li class="nav-item">
+            <a class="nav-link" href="<?php echo site_url('admin/overview/fisik') ?>">
+                <span>Fisik</span></a>
+        </li>
+	<?php endif; ?>
+    <?php if ($this->session->user_logged->role == 'admin' || $this->session->user_logged->akses_layanan): ?>
+        <li class="nav-item">
+            <a class="nav-link" href="<?php echo site_url('admin/overview/layanan') ?>">
+                <span>Layanan</span></a>
+        </li>
+	<?php endif; ?>
+    <?php if ($this->session->user_logged->role == 'admin' || $this->session->user_logged->akses_intangible): ?>
+        <li class="nav-item">
+            <a class="nav-link" href="<?php echo site_url('admin/overview/intangible') ?>">
+                <span>Intangible</span></a>
+        </li>
+	<?php endif; ?>
+    <?php if ($this->session->user_logged->role == 'admin' || $this->session->user_logged->akses_software): ?>
+        <li class="nav-item">
+            <a class="nav-link" href="<?php echo site_url('admin/overview/software') ?>">
+                <span>Software</span></a>
+        </li>
+	<?php endif; ?>
+
     <!-- Divider -->
     <hr class="sidebar-divider d-none d-md-block">
     <!-- Sidebar Toggler (Sidebar) -->

@@ -9,8 +9,8 @@
     <div class="container">
         <div class="row">
             <div class="col-12 col-md-6 text-center mt-5 mx-auto p-4">
-                <h1 class="h2">Login Admin</h1>
-                <p class="lead">Silahkan masuk ke Panel Admin</p>
+                <h1 class="h2">Manajemen Risiko</h1>
+                <p class="lead">Silahkan memasukkan data diri</p>
             </div>
         </div>
         <div class="row">
@@ -24,6 +24,7 @@
                         <label for="email">Password</label>
                         <input type="password" class="form-control" name="password" placeholder="Password..." required/>
                     </div>
+                    <!--
                     <div class="form-group">
                         <div class="d-flex justify-content-between">
                             <div class="custom-control custom-checkbox">
@@ -33,6 +34,7 @@
                             <a href="<?= site_url('reset_password') ?>">Lupa Password?</a>
                         </div>
                     </div>
+                    -->
                     <div class="form-group">
                         <input type="submit" class="btn btn-success w-100" value="Login" />
                     </div>

@@ -11,6 +11,7 @@ Class UserManagement extends CI_Controller{
         
         $this->load->model("user_model");
         if($this->user_model->isNotLogin()) redirect(site_url('admin/login'));
+        if($this->session->user_logged->role != 'admin') show_404();
     }
 
     public function index(){
