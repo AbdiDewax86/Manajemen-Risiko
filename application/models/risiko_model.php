@@ -233,7 +233,7 @@ class Risiko_model extends CI_Model{
         $this->id = $post["id"];
         $this->klasifikasi = $post["klasifikasi"];
         $this->subklasifikasi = $post["subklasifikasi"];
-        // $this->tanggal = $post["tanggal"];
+        $this->tanggal = $post["tanggal"];
         $this->dampak_keterangan = $post["dampak_keterangan"];
         $this->dampak_nilai = $post["dampak_nilai"];
         $this->pengancam_keterangan = $post["pengancam_keterangan"];

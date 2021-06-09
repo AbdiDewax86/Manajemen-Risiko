@@ -56,6 +56,14 @@
                                         <input class="form-control" name="id" value="<?php echo $risiko->id ?>" readonly> 
                                     </div>
                                 </div>
+                                <div class="form-group row">
+                                    <div class="col-lg-4 col-12">
+                                        <p class="text-right align-middle">Tanggal Dibuat</p>
+                                    </div>
+                                    <div class="col-lg-6 col-12">
+                                        <input class="form-control" name="tanggal" value="<?php echo $risiko->tanggal ?>" readonly> 
+                                    </div>
+                                </div>
                                 <h4>Klasifikasi</h4>
                                 <div class="form-group row">
                                     <div class="col-lg-4 col-12">
