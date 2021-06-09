@@ -19,6 +19,7 @@ Class UserManagement extends CI_Controller{
     }
 
     public function list(){
+        $this->session->set_userdata('referred_from', current_url());
         $data["users"] = $this->usermanagement_model->getAll();
         $this->load->view("admin/usermanagement/list", $data);
     }
@@ -52,14 +53,15 @@ Class UserManagement extends CI_Controller{
         $data["users"] = $users->getById($id);
         if (!$data["users"]) show_404();
 
-        $this->load->view("admin/usermanagement/edit_user");
+        $this->load->view("admin/usermanagement/edit_user", $data);
     }
 
     public function delete($id = null){
         if (!isset($id)) show_404();
 
         if ($this->usermanagement_model->delete($id)){
-            redirect(site_url('admin/usermanagement'));
+            $referred_from = $this->session->userdata('referred_from');
+            redirect($referred_from, 'refresh');
         }
     }
 }

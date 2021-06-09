@@ -24,6 +24,7 @@ class Risiko extends CI_Controller{
     }
 
     public function list(){
+        $this->session->set_userdata('referred_from', current_url());
         if ($this->session->user_logged->role == 'admin'){  
             $data["risiko"] = $this->risiko_model->getAll();
             $this->load->view("admin/risiko/list", $data);
@@ -92,7 +93,8 @@ class Risiko extends CI_Controller{
             if (!isset($id)) show_404();
     
             if ($this->risiko_model->delete($id)){
-                redirect(site_url('admin/risiko'));
+                $referred_from = $this->session->userdata('referred_from');
+                redirect($referred_from, 'refresh');
             }
         }
     }

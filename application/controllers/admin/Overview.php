@@ -21,6 +21,7 @@ class Overview extends CI_Controller {
     public function informasi(){
         if($this->session->user_logged->role == 'admin' || $this->session->user_logged->akses_informasi){
             $data["risiko"] = $this->risiko_model->getInformasi();
+            $this->session->set_userdata('referred_from', current_url());
             $this->load->view('admin/klasifikasi_informasi', $data);
         } 
         else{
@@ -30,6 +31,7 @@ class Overview extends CI_Controller {
     public function orang(){
         if($this->session->user_logged->role == 'admin' || $this->session->user_logged->akses_orang){
             $data["risiko"] = $this->risiko_model->getOrang();
+            $this->session->set_userdata('referred_from', current_url());
             $this->load->view('admin/klasifikasi_orang', $data);
         } 
         else{
@@ -39,6 +41,7 @@ class Overview extends CI_Controller {
     public function fisik(){
         if($this->session->user_logged->role == 'admin' || $this->session->user_logged->akses_fisik){
             $data["risiko"] = $this->risiko_model->getFisik();
+            $this->session->set_userdata('referred_from', current_url());
             $this->load->view('admin/klasifikasi_fisik', $data);
         } 
         else{
@@ -48,6 +51,7 @@ class Overview extends CI_Controller {
     public function layanan(){
         if($this->session->user_logged->role == 'admin' || $this->session->user_logged->akses_layanan){
             $data["risiko"] = $this->risiko_model->getLayanan();
+            $this->session->set_userdata('referred_from', current_url());
             $this->load->view('admin/klasifikasi_layanan', $data);
         } 
         else{
@@ -57,6 +61,7 @@ class Overview extends CI_Controller {
     public function intangible(){
         if($this->session->user_logged->role == 'admin' || $this->session->user_logged->akses_intangible){
             $data["risiko"] = $this->risiko_model->getIntangible();
+            $this->session->set_userdata('referred_from', current_url());
             $this->load->view('admin/klasifikasi_intangible', $data);
         } 
         else{
@@ -66,6 +71,7 @@ class Overview extends CI_Controller {
     public function software(){
         if($this->session->user_logged->role == 'admin' || $this->session->user_logged->akses_software){
             $data["risiko"] = $this->risiko_model->getSoftware();
+            $this->session->set_userdata('referred_from', current_url());
             $this->load->view('admin/klasifikasi_software', $data);
         } 
         else{

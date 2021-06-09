@@ -179,11 +179,12 @@ class Risiko_model extends CI_Model{
     }
 
     public function save(){
+        $datenow = date("Y-m-d");
         $post = $this->input->post();
         $this->id = uniqid();
         $this->klasifikasi = $post["klasifikasi"];
         $this->subklasifikasi = $post["subklasifikasi"];
-        // $this->tanggal = $post["tanggal"];
+        $this->tanggal = $datenow;
         $this->dampak_keterangan = $post["dampak_keterangan"];
         $this->dampak_nilai = $post["dampak_nilai"];
         $this->pengancam_keterangan = $post["pengancam_keterangan"];
@@ -192,18 +193,38 @@ class Risiko_model extends CI_Model{
         $this->bawaan_kerentanan_nilai = $post["bawaan_kerentanan_nilai"];
         $this->bawaan_paparan_keterangan = $post["bawaan_paparan_keterangan"];
         $this->bawaan_paparan_nilai = $post["bawaan_paparan_nilai"];
-        // $this->bawaan_jenis_risiko = $post["bawaan_jenis_risiko"];
-        // $this->bawaan_nilai_risiko = $post["bawaan_nilai_risiko"];
         $this->kontrol_keterangan = $post["kontrol_keterangan"];
         $this->sisa_paparan_keterangan = $post["sisa_paparan_keterangan"];
         $this->sisa_paparan_nilai = $post["sisa_paparan_nilai"];
         $this->sisa_kerentanan_keterangan = $post["sisa_kerentanan_keterangan"];
         $this->sisa_kerentanan_nilai = $post["sisa_kerentanan_nilai"];
-        // $this->sisa_jenis_risiko = $post["sisa_jenis_risiko"];
-        // $this->sisa_nilai_risiko = $post["sisa_nilai_risiko"];
         $this->mitigasi_kontrol = $post["mitigasi_kontrol"];
         $this->mitigasi_pic = $post["mitigasi_pic"];
         $this->mitigasi_target = $post["mitigasi_target"];
+
+        $this->bawaan_nilai_risiko = $this->dampak_nilai * $this->pengancam_nilai * $this->bawaan_kerentanan_nilai * $this->bawaan_paparan_nilai;
+        $this->sisa_nilai_risiko = $this->dampak_nilai * $this->pengancam_nilai * $this->sisa_kerentanan_nilai * $this->sisa_paparan_nilai;
+
+        if($this->bawaan_nilai_risiko <= 24){
+            $this->bawaan_jenis_risiko = "Rendah";
+        }
+        elseif($this->bawaan_nilai_risiko <= 64){
+            $this->bawaan_jenis_risiko = "Sedang";
+        }
+        else{
+            $this->bawaan_jenis_risiko = "Tinggi";
+        }
+
+        if($this->sisa_nilai_risiko <= 24){
+            $this->sisa_jenis_risiko = "Rendah";
+        }
+        elseif($this->sisa_nilai_risiko <= 64){
+            $this->sisa_jenis_risiko = "Sedang";
+        }
+        else{
+            $this->sisa_jenis_risiko = "Tinggi";
+        }
+
         return $this->db->insert($this->_table, $this);
     }
 
@@ -221,18 +242,38 @@ class Risiko_model extends CI_Model{
         $this->bawaan_kerentanan_nilai = $post["bawaan_kerentanan_nilai"];
         $this->bawaan_paparan_keterangan = $post["bawaan_paparan_keterangan"];
         $this->bawaan_paparan_nilai = $post["bawaan_paparan_nilai"];
-        // $this->bawaan_jenis_risiko = $post["bawaan_jenis_risiko"];
-        // $this->bawaan_nilai_risiko = $post["bawaan_nilai_risiko"];
         $this->kontrol_keterangan = $post["kontrol_keterangan"];
         $this->sisa_kerentanan_keterangan = $post["sisa_kerentanan_keterangan"];
         $this->sisa_kerentanan_nilai = $post["sisa_kerentanan_nilai"];
         $this->sisa_paparan_keterangan = $post["sisa_paparan_keterangan"];
         $this->sisa_paparan_nilai = $post["sisa_paparan_nilai"];
-        // $this->sisa_jenis_risiko = $post["sisa_jenis_risiko"];
-        // $this->sisa_nilai_risiko = $post["sisa_nilai_risiko"];
         $this->mitigasi_kontrol = $post["mitigasi_kontrol"];
         $this->mitigasi_pic = $post["mitigasi_pic"];
         $this->mitigasi_target = $post["mitigasi_target"];
+
+        $this->bawaan_nilai_risiko = $this->dampak_nilai * $this->pengancam_nilai * $this->bawaan_kerentanan_nilai * $this->bawaan_paparan_nilai;
+        $this->sisa_nilai_risiko = $this->dampak_nilai * $this->pengancam_nilai * $this->sisa_kerentanan_nilai * $this->sisa_paparan_nilai;
+        
+        if($this->bawaan_nilai_risiko <= 24){
+            $this->bawaan_jenis_risiko = "Rendah";
+        }
+        elseif($this->bawaan_nilai_risiko <= 64){
+            $this->bawaan_jenis_risiko = "Sedang";
+        }
+        else{
+            $this->bawaan_jenis_risiko = "Tinggi";
+        }
+
+        if($this->sisa_nilai_risiko <= 24){
+            $this->sisa_jenis_risiko = "Rendah";
+        }
+        elseif($this->sisa_nilai_risiko <= 64){
+            $this->sisa_jenis_risiko = "Sedang";
+        }
+        else{
+            $this->sisa_jenis_risiko = "Tinggi";
+        }
+
         return $this->db->update($this->_table, $this, array('id' => $post['id']));
     }
 
