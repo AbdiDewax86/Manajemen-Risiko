@@ -82,7 +82,7 @@ class UserManagement_model extends CI_Model{
         $this->user_id = $post["user_id"];
         $this->username = $post["username"];
         $this->email = $post["email"];
-        $this->password = $post["password"];
+        $this->password = password_hash($post["password"], PASSWORD_DEFAULT);
         $this->fullname = $post["fullname"];
         $this->phone = $post["phone"];
         $this->role = $post["role"];
